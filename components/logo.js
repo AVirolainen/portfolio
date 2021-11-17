@@ -24,6 +24,7 @@ const Logo = ()=>{
 				<Text color={useColorModeValue('gray.800', 'whiteAlpha.900')} 
 					  fontFamily="M PLUS Rounded 1c"
 					  bold="weight"
+					  letterSpacing={1}
 					  ml={3}>
 					  	Rudenko Stas
 					  </Text>	
