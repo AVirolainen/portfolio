@@ -1,9 +1,14 @@
-import {Container, Box, Heading, Image} from '@chakra-ui/react'
+import {Container, Box, Heading, Button, Image, useColorModeValue} from '@chakra-ui/react'
+import Section from "../components/section"
+import Paragraph from "../components/paragraph"
+import NextLink from "next/link"
+import {ChevronRightIcon} from "@chakra-ui/icons"
+import {BioSection, BioYear} from "../components/bio"
 
 const Page = ()=>{
 	return (
 		<Container>
-			<Box borderRadius="lg" border="1px" borderColor="grey" p={3} mb={6} align="center">
+			<Box borderRadius="lg" border="1px" bg={useColorModeValue("whiteAlpha.800", "whiteAlpha.200")} p={3} mb={6} align="center">
 				Hello, my name is Stanislav, and i am front-end developer
 			</Box>
 			<Box display={{md: 'flex'}}>
@@ -28,6 +33,70 @@ const Page = ()=>{
 						alt="profile image" />
 				</Box>
 			</Box>
+			<Section delay={0.1}>
+				<Heading as="h3" variant="section-title">
+					Work
+				</Heading>
+				<Paragraph>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+					voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+					officia deserunt mollit anim id est laborum.
+				</Paragraph>
+				<Box align="center" my={4}>
+					<NextLink href="/works">
+						<Button rightIcon={<ChevronRightIcon />} colorScheme="teal" fontSize="14">
+							My Portfolio
+						</Button>
+					</NextLink>
+				</Box>
+			</Section>
+
+			<Section delay={0.2}>
+				<Heading as="h3" variant="section-title">
+					Bio
+				</Heading>
+				<BioSection>
+					<BioYear>
+						2002
+					</BioYear>
+					Born in Cherkasy
+				</BioSection>
+				<BioSection>
+					<BioYear>
+						2019
+					</BioYear>
+					Finished school and had aplied to KPI on the Faculty of Information and Computer Technologies
+				</BioSection>
+				<BioSection>
+					<BioYear>
+						2020
+					</BioYear>
+					Start being addicted to programming
+				</BioSection>
+				<BioSection>
+					<BioYear>
+						2023
+					</BioYear>
+					Finished Kpi and applied to 5-th grade
+				</BioSection>
+				<BioSection>
+					<BioYear>
+						2025
+					</BioYear>
+					.......
+				</BioSection>
+			</Section>
+
+			<Section delay={0.3}>
+				<Heading as="h3" variant="section-title">
+					Hobbies
+				</Heading>
+				<Paragraph>
+					Art, Music, Programming, Video Games, Football, Chess
+				</Paragraph>
+			</Section>
 		</Container>
 	)
 }
