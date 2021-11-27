@@ -9,7 +9,7 @@ import Layout from "../components/layouts/article"
 const Page = ()=>{
 	return (
 		<Layout>
-		<Container>
+		<Container mt={20}>
 			<Box borderRadius="lg" border="1px" bg={useColorModeValue("whiteAlpha.800", "whiteAlpha.200")} p={3} mb={6} align="center">
 				Hello, my name is Stanislav, and i am front-end developer
 			</Box>

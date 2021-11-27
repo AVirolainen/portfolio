@@ -1,15 +1,15 @@
-import {Container, Heading, SimpleGrid, Divider} from "@chakra-ui/react"
+import { Container, Heading, SimpleGrid, Divider } from "@chakra-ui/react"
 import Section from "../components/section"
-import {WorkGridItem} from "../components/grid-item"
+import { WorkGridItem } from "../components/grid-item"
 import Layout from "../components/layouts/article"
 
 import kinolove from "../public/works/kinolove.jpg"
 import footballFantasy from "../public/works/football-fantasy.jpg"
 import pokedex from "../public/works/pokedex.jpg"
 
-const Works = ()=>{
-	return(
-		<Layout>
+const Works = () => {
+    return (
+        <Layout>
 		<Container>
 			<Heading as="h3" fontSize={20} mb={4}>
 				Works
@@ -34,7 +34,7 @@ const Works = ()=>{
 			</SimpleGrid>
 		</Container>
 		</Layout>
-	)
+    )
 }
 
 export default Works
