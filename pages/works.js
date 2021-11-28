@@ -10,7 +10,7 @@ import pokedex from "../public/works/pokedex.jpg"
 const Works = () => {
     return (
         <Layout>
-		<Container>
+		<Container mt={10}>
 			<Heading as="h3" fontSize={20} mb={4}>
 				Works
 			</Heading>

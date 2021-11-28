@@ -8,7 +8,7 @@ import Planet from "../planet"
 
 const Main = ({children, router}) => {
  return(
- 	<Box as="main" pb={8}>
+ 	<Box as="main" >
  		<Head>
  			<meta name="viewport" content="width=device-width, initial-scale=1" />
  			<title>Stanislav Rudenko</title>
@@ -16,7 +16,7 @@ const Main = ({children, router}) => {
 
  		<NavBar path={router.asPath} />
 
- 		<Container maxV="container.md">
+ 		<Container maxW="container.lg">
             <NoSsr>
                 <Planet></Planet>
             </NoSsr>

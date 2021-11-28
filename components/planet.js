@@ -24,6 +24,16 @@ const Planet = ()=>{
 	const [scene] = useState(new THREE.Scene())
 	const [_controls, setControls] = useState()
 
+	const handleWindowResize = useCallback(()=>{
+		const {current: container} = refContainer
+		if(container && renderer){
+			const scW = container.clientWidth
+			const scH = container.clientHeight
+
+			renderer.setSize(scW, scH)
+		}
+	}, [renderer])
+
 	useEffect(()=>{
 		const {current: container} = refContainer
 		if(container && !renderer){
@@ -41,14 +51,13 @@ const Planet = ()=>{
 			container.appendChild(renderer.domElement)
 			setRenderer(renderer)
 
-			const scale = scH * 0.5+4.8
 			const camera = new THREE.OrthographicCamera(
-				-scale,
-				scale,
-				scale, 
-				-scale,
-				0.01,
-				500000
+				(-scW/1.5),
+				scW/1.5,
+				scH/1.5, 
+				-scH/1.5,
+				1,
+				1000
 			)
 			camera.position.copy(initialCameraPosition)
 			camera.lookAt(target)
@@ -98,12 +107,18 @@ const Planet = ()=>{
 		}
 	}, [])
 
+	useEffect(()=>{
+		window.addEventListener('resize', handleWindowResize, false)
+		return ()=>{
+			window.removeEventListener('resize', handleWindowResize, false)
+		}
+	}, [renderer, handleWindowResize])
+
 	return(
 		<Box 
 			ref={refContainer} 
 			className="planet" 
 			m="auto" 
-			at={["-20px", "-60px", "-120px"]}
 		 	mb={["-40px", "-140px", "-200px"]}
 		 	w={[280, 480, 640]}
 		 	h={[280, 480, 640]}
