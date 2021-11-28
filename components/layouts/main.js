@@ -1,5 +1,4 @@
 import Head from "next/head"
-import Logo from "../logo"
 import NavBar from "../navbar"
 import NoSsr from "../no-ssr"
 import {Box, Container} from "@chakra-ui/react"
