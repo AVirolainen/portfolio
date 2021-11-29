@@ -105,7 +105,7 @@ const Planet = ()=>{
 				renderer.dispose()
 			})
 		}
-	}, [])
+	}, [renderer, scene, target, initialCameraPosition])
 
 	useEffect(()=>{
 		window.addEventListener('resize', handleWindowResize, false)
