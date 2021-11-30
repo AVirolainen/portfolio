@@ -25,11 +25,19 @@ import {
 const Page = ()=>{
 	return (
 		<Layout>
-		<Container mt={20}>
-			<Box borderRadius="lg" border="1px" bg={useColorModeValue("whiteAlpha.800", "whiteAlpha.200")} p={3} mb={6} align="center">
+		<Container mt={20} maxW='container.lg'>
+			<Box 
+				borderRadius="lg" 
+				border="1px" 
+				maxW='container.md' 
+				bg={useColorModeValue("whiteAlpha.800", "whiteAlpha.200")} 
+				p={3}
+				mx="auto" 
+				mb={6} 
+				align="center">
 				Hello, my name is Stanislav, and i am front-end developer
 			</Box>
-			<Box display={{md: 'flex'}}>
+			<Box>
 				<Box flexGrow={1}>
 					<Heading as="h2" variant="page-title" align="center">
 						Rudenko Stanislav
@@ -41,6 +49,7 @@ const Page = ()=>{
 					ml={{md: 6}} 
 					align="center">
 					<Image 
+						mt={5}
 						borderColor="whiteAlpha.800"
 						borderWidth={2}
 						borderStyle="solid"

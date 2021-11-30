@@ -28,7 +28,7 @@ const Planet = ()=>{
 		const {current: container} = refContainer
 		if(container && renderer){
 			const scW = container.clientWidth
-			const scH = container.clientHeight
+			const scH = container.clientHeight-100
 
 			renderer.setSize(scW, scH)
 		}
@@ -38,7 +38,7 @@ const Planet = ()=>{
 		const {current: container} = refContainer
 		if(container && !renderer){
 			const scW = container.clientWidth
-			const scH = container.clientHeight
+			const scH = container.clientHeight-100
 
 			const renderer = new THREE.WebGLRenderer({
 				antialias: true,
@@ -52,10 +52,10 @@ const Planet = ()=>{
 			setRenderer(renderer)
 
 			const camera = new THREE.OrthographicCamera(
-				(-scW/1.5),
-				scW/1.5,
-				scH/1.5, 
-				-scH/1.5,
+				(-scW/2),
+				scW/2,
+				scH/2, 
+				-scH/2,
 				1,
 				1000
 			)
