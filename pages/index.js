@@ -53,7 +53,7 @@ const Page = ()=>{
 						borderColor="whiteAlpha.800"
 						borderWidth={2}
 						borderStyle="solid"
-						maxWidth="100px"
+						maxWidth="200px"
 						display="inline-block"
 						borderRadius="full"
 						src="/logo.jpg"
