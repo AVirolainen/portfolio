@@ -14,6 +14,7 @@ import {
   Td,
   TableCaption,
 } from "@chakra-ui/react";
+import { Chessboard } from 'react-chessboard';
 
 const ChessPage = () => {
   return (
@@ -72,6 +73,19 @@ const ChessPage = () => {
           </Tr>
         </Tbody>
       </Table>
+      <Heading as="h5" fontSize="3xl" align="center" mt={10}>
+        Interesting position from my last rapid game(you can also move pieces on the board)
+      </Heading>
+      <Box
+        align="center"
+        mx="auto"
+        mt={10}
+        fontSize="3xl"
+        w="80%"
+        fontWeight="700"
+      >
+        <Chessboard position={"r4rk1/2pq2pp/pp3p2/1nb5/R3R3/2P3P1/1P2QP1P/1NB3K1 b - - 1 21"} id="BasicBoard" />
+      </Box>
     </Container>
   );
 };
