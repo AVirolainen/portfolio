@@ -5,6 +5,7 @@ import {
   Box,
   Flex,
   useColorModeValue,
+  Text,
   Table,
   Thead,
   Tbody,
@@ -15,6 +16,7 @@ import {
   TableCaption,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import ReactStars from "react-rating-stars-component";
 
 let idFilms = [
   "tt3525168",
@@ -47,10 +49,8 @@ const FilmsPage = () => {
   }, []);
 
   console.log(filmsInfo);
-  if(!filmsInfo){
-    return(
-      <Box>...</Box>
-    )
+  if (!filmsInfo) {
+    return <Box>...</Box>;
   }
   return (
     <Container mt={10} maxW="container.lg">
@@ -69,14 +69,65 @@ const FilmsPage = () => {
         I am not such a big fan of films but I want to share my top
       </Box>
       {filmsInfo.map((item, index) => {
-        return (<Box key={index} maxW="container.md" mb={45}>
-          <Heading as="h3" variant="section-title" minWidth="100%">
-            #{index+1} {item.Title}
-          </Heading>
-          <Flex align="center" mx="auto" fontSize="3xl" fontWeight="700">
-            <Image src={item.Poster} alt="lambs" maxWidth="300px" mb={5} />
-          </Flex>
-        </Box>)
+        return (
+          <Box key={index} maxW="container.md" mb={45}>
+            <Heading as="h3" variant="section-title" minWidth="100%">
+              #{index + 1} {item.Title}
+            </Heading>
+            <Flex align="center" mx="auto" fontSize="3xl" fontWeight="700">
+              <Image src={item.Poster} alt="lambs" maxWidth="300px" mb={5} />
+              <Box minWidth="80%" ml={15} minHeight="430px" fontSize="18px">
+                <Flex>
+                  <Text width="100px" color="#adacac" mb={3}>
+                    Year:
+                  </Text>
+                  {item.Year}
+                </Flex>
+                <Flex>
+                  <Text width="100px" color="#adacac" mb={3}>
+                    Runtime:
+                  </Text>
+                  {item.Runtime}
+                </Flex>
+                <Flex>
+                  <Text width="100px" color="#adacac" mb={3}>
+                    Genre:
+                  </Text>
+                  {item.Genre}
+                </Flex>
+                <Flex>
+                  <Text width="100px" color="#adacac" mb={3}>
+                    Director:
+                  </Text>
+                  {item.Director}
+                </Flex>
+                <Flex>
+                  <Text width="100px" color="#adacac" mb={3}>
+                    Actors:
+                  </Text>
+                  {item.Actors}
+                </Flex>
+                <Flex>
+                  <Text width="100px" color="#adacac" mb={3}>
+                    Plot:
+                  </Text>
+                  <Text ml={55}>{item.Plot}</Text>
+                </Flex>
+                <Flex mt={20} alignItems="center">
+                  <Text mr={5}>Your rating: </Text>
+                  <ReactStars
+                    count={5}
+                    onChange={() => {
+                      return 1;
+                    }}
+                    size={35}
+                    activeColor="#ffd700"
+                  />
+                </Flex>
+              </Box>
+            </Flex>
+          </Box>
+        );
       })}
     </Container>
   );
