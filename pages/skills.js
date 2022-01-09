@@ -1,20 +1,6 @@
-import {
-  Container,
-  Box,
-  Heading,
-  Flex,
-  Button,
-  Image,
-  Link,
-  Text,
-  Icon,
-  List,
-  ListItem,
-  useColorModeValue
-} from '@chakra-ui/react'
-import Section from '../components/section'
-import Paragraph from '../components/paragraph'
-import { Progress } from 'antd'
+import { Container, Box, Heading, Flex, Image } from "@chakra-ui/react";
+import Section from "../components/section";
+import Paragraph from "../components/paragraph";
 
 const Skills = () => {
   return (
@@ -170,7 +156,7 @@ const Skills = () => {
         </Paragraph>
       </Section>
     </Container>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;

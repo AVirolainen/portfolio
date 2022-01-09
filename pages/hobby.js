@@ -13,7 +13,6 @@ import {
   Td,
   TableCaption,
 } from "@chakra-ui/react";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const Hobby = () => {
@@ -26,6 +25,8 @@ const Hobby = () => {
   }, []);
 
   console.log(table);
+
+  const bgColor = useColorModeValue("whiteAlpha.800", "whiteAlpha.200")
 
   if (!table.length) {
     return <Box>....</Box>;
@@ -46,7 +47,7 @@ const Hobby = () => {
         borderRadius="lg"
         border="1px"
         maxW="container.sm"
-        bg={useColorModeValue("whiteAlpha.800", "whiteAlpha.200")}
+        bg={bgColor}
         p={8}
         fontSize="xl"
         mx="auto"
