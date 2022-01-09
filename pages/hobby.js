@@ -14,9 +14,22 @@ import {
   TableCaption,
 } from "@chakra-ui/react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const Hobby = ({ table }) => {
+const Hobby = () => {
+  const [table, setTable] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://apl-table.herokuapp.com/table`)
+      .then((res) => res.json())
+      .then((data) => setTable(Object.values(data)));
+  }, []);
+
   console.log(table);
+
+  if (!table.length) {
+    return <Box>....</Box>;
+  }
   return (
     <Container mt={10} maxW="container.md">
       <Box
@@ -53,14 +66,14 @@ const Hobby = ({ table }) => {
           </Tr>
         </Thead>
         <Tbody>
-          {Object.values(table).map((item, index) => {
-            let color = item.team == "Ливерпуль" ? "#4f4f4f" : " "
+          {table.map((item, index) => {
+            let color = item.team == "Ливерпуль" ? "#4f4f4f" : " ";
             return (
               <Tr key={index} backgroundColor={color}>
-                <Td>{index+1}</Td>
+                <Td>{index + 1}</Td>
                 <Td>
                   <Flex>
-                    <Image src={item.image} alt="logo" mr={5}/> {item.team}
+                    <Image src={item.image} alt="logo" mr={5} /> {item.team}
                   </Flex>
                 </Td>
                 <Td isNumeric>{item.points}</Td>
@@ -78,16 +91,6 @@ const Hobby = ({ table }) => {
       </Table>
     </Container>
   );
-};
-
-Hobby.getInitialProps = async () => {
-  try {
-    const res = await axios.get("https://apl-table.herokuapp.com/table");
-    const table = res.data;
-    return { table };
-  } catch (error) {
-    return { error };
-  }
 };
 
 export default Hobby;
