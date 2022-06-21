@@ -1,35 +1,38 @@
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
+import Constants from "./constants"
+
+const onLoad = (obj, scene, options) => {
+	const {receiveShadow, castShadow} = options
+
+	obj.name = Constants.MODEL_NAME
+	obj.position.x = Constants.MODEL_POSITIONING_X
+	obj.position.y = Constants.MODEL_POSITIONING_Y
+	obj.receiveShadow = receiveShadow
+	obj.castShadow = castShadow
+
+	scene.add(obj)
+	obj.traverse((child)=>{
+		if(child.isMech){
+			child.castShadow = castShadow
+			child.receiveShadow = receiveShadow
+		}
+	})
+}
 
 export function loadGLTFModel(
 	scene,
 	glbPath,
-	options = {
-		receiveShadow: true,
-		castShadow: true
-	}
+	options = Constants.DEFAULT_OPTONS
 ){
-	const {receiveShadow, castShadow} = options
 	return new Promise((resolve, reject)=>{
 		const loader = new GLTFLoader()
 
 		loader.load(
 			glbPath,
-			gltf =>{
+			gltf => {
 				const obj = gltf.scene
-				obj.name = 'planet'
-				obj.position.y = 0
-				obj.position.x = 0
-				obj.receiveShadow = receiveShadow
-				obj.castShadow = castShadow
-
-				scene.add(obj)
-				obj.traverse(function(child){
-					if(child.isMech){
-						child.castShadow = castShadow
-						child.receiveShadow = receiveShadow
-					}
-				}) 
-				resolve(obj)
+				onLoad(obj, scene, options)
+				resolve()
 			},
 			undefined,
 			function(error){
