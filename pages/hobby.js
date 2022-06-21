@@ -24,8 +24,6 @@ const Hobby = () => {
       .then((data) => setTable(Object.values(data)));
   }, []);
 
-  console.log(table);
-
   const bgColor = useColorModeValue("whiteAlpha.800", "whiteAlpha.200")
 
   if (!table.length) {
