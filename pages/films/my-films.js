@@ -25,7 +25,7 @@ const FilmsPage = () => {
   const [filmsInfo, setFilmsInfo] = useState();
 
   useEffect(() => {
-    let test = idFilms.map((item) => {
+    let filmsPromises = idFilms.map((item) => {
       return fetch(`http://www.omdbapi.com/?i=${item}&apikey=c38fb01d`)
         .then((response) => {
           return response.json();
@@ -35,7 +35,7 @@ const FilmsPage = () => {
         });
     });
 
-    Promise.all(test).then((values) => {
+    Promise.all(filmsPromises).then((values) => {
       setFilmsInfo(values);
     });
   }, []);
